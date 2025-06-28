@@ -51,7 +51,7 @@ def handle_url(msg):
         else:
             # Envoie direct
             with open(chemin, 'rb') as f:
-                video = types.InputFile(f, filename="video.mp4")
+                video = types.InputFile(f, file_name="video.mp4")
                 bot.send_video(msg.chat.id, video, timeout=120, caption="📽️ Voici ta vidéo")
 
         os.remove(chemin)
