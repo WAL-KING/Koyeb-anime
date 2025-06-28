@@ -1,17 +1,20 @@
-# Utilise une image Python avec ffmpeg
+# ✅ Image de base légère avec Python
 FROM python:3.10-slim
 
-# Installe ffmpeg et autres dépendances
-RUN apt update && apt install -y ffmpeg && apt clean
+# 📦 Installer ffmpeg et ses dépendances
+RUN apt update && \
+    apt install -y ffmpeg && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Crée un dossier pour le code
+# 📁 Créer un dossier de travail
 WORKDIR /app
 
-# Copie les fichiers
+# 📂 Copier les fichiers de ton projet dans le conteneur
 COPY . .
 
-# Installe les dépendances
+# 🔧 Installer les dépendances Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Lance le bot
+# 🚀 Lancer le bot
 CMD ["python", "bot.py"]
